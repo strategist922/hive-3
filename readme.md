@@ -7,7 +7,7 @@ hive is a simple [node.js](http://nodejs.org) server for displaying logs and sta
 ## Install
 
 ```
-npm install https://github.com/martinrue/hive/tarball/master
+git clone https://github.com/martinrue/hive && cd hive && npm install
 ```
 
 ## Running
