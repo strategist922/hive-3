@@ -50,42 +50,40 @@ created from a remote process. Hive logs multiple processes at once, so all
 requests require a `name` parameter to identify the process that is creating
 the log or statistic.
 
-```
-POST /log
-Creates a textual log message
+    POST /log
+    Creates a textual log message
 
-  HTTP Parameters
-  ---------------
-  name    - the name of the process that the log is associated with
-  message - the textual log message to lodge
+      HTTP Parameters
+      ---------------
+      name    - the name of the process that the log is associated with
+      message - the textual log message to lodge
 
-POST /set
-Creates a statistic and sets it to the given value
+    POST /set
+    Creates a statistic and sets it to the given value
 
-  HTTP Parameters
-  ---------------
-  name  – the name of the process that the log is associated with
-  key   – the name of the statistic
-  value – the initial value of the statistic
+      HTTP Parameters
+      ---------------
+      name  – the name of the process that the log is associated with
+      key   – the name of the statistic
+      value – the initial value of the statistic
 
-POST /inc
-Increments the value of the named statistic by 1 or as specified by the 'by' parameter
+    POST /inc
+    Increments the value of the named statistic by 1 or as specified by the 'by' parameter
 
-  HTTP Parameters
-  ---------------
-  name – the name of the process that the log is associated with
-  key  – the name of the statistic
-  by   – an optional amount by which to increment the statistic
+      HTTP Parameters
+      ---------------
+      name – the name of the process that the log is associated with
+      key  – the name of the statistic
+      by   – an optional amount by which to increment the statistic
 
-POST /dec
-Decrements the value of the named statistic by 1 or as specified by the 'by' parameter
+    POST /dec
+    Decrements the value of the named statistic by 1 or as specified by the 'by' parameter
 
-  HTTP Parameters
-  ---------------
-  name – the name of the process that the log is associated with
-  key  – the name of the statistic
-  by   – an optional amount by which to decrement the statistic
-```
+      HTTP Parameters
+      ---------------
+      name – the name of the process that the log is associated with
+      key  – the name of the statistic
+      by   – an optional amount by which to decrement the statistic
 
 ## JSON Snapshot
 
