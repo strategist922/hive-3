@@ -22,4 +22,4 @@ app.configure(function() {
 require('./routes/web')(app, processManager);
 require('./routes/api')(app, processManager);
 
-app.listen(process.argv[2] || 5000);
+app.listen(process.env.PORT || 5000);
