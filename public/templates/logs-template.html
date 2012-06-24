@@ -1,0 +1,8 @@
+<table class="table table-striped">
+  <% _.each(process.logs, function(log) { %>
+    <tr>
+      <td><%- log.message %></td>
+      <td><%- log.when %></td>
+    </tr>
+  <% }); %>
+</table>

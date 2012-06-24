@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="css/bootstrap.css" rel="stylesheet" />
+  <link href="css/app.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li>
+        <% if (app.enabled('showlogo')) { %>
+          <img src="img/logo.png" />
+        <% } %>
+      </li>
+
+      <% _.each(snapshot.processes, function(process, index) { %>
+        <li <%- (index === 0) ? 'class="active"' : '' %>>
+          <a href="#tab<%= index %>" data-toggle="tab"><%= process.name %></a>
+        </li>
+      <% }); %>
+    </ul>
+
+    <div class="tab-content">
+
+      <% _.each(snapshot.processes, function(process, index) { %>
+        <div class="tab-pane <%= (index === 0) ? 'active' : '' %>" id="tab<%= index %>">
+          <div class="row">
+            <div class="span8">
+              <h1>Process Logs</h1>
+              <div id="logs-section<%= index %>"></div>
+            </div>
+            <div class="span4">
+              <h1>Process Stats</h1>
+              <div id="stats-section<%= index %>"></div>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+
+    </div>
+
+    <div class="uptime">
+      Logging started <%= snapshot.started %>
+    </div>
+  </div>
+  
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery.sparkline.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="js/underscore.js"></script>
+
+  <script type="text/javascript">
+
+    $(function() {
+      var templates = {};
+
+      var sparklineOptions = { 
+        type: 'line', 
+        width: '70px', 
+        height: '13px', 
+        fillColor: '#CBE5FF', 
+        lineColor: '#66B5DC', 
+        minSpotColor: '#66B5DC', 
+        maxSpotColor: '#66B5DC', 
+        spotColor: '#66B5DC', 
+        spotRadius: 2 
+      };
+
+      $.get('templates/logs-template.html', function(logsTemplate) {        
+        $.get('templates/stats-template.html', function(statsTemplate) {
+          templates.logs = logsTemplate;
+          templates.stats = statsTemplate;
+          
+          updateSnapshot();
+          setInterval(updateSnapshot, 1000);
+        });
+      });
+
+      var updateSnapshot = function() {
+        $.get('/snapshot', function(snapshot) {
+          snapshot.processes.forEach(function(process, index) {
+            $('#logs-section' + index).html(_.template(templates.logs, { process: process }));
+            $('#stats-section' + index).html(_.template(templates.stats, { process: process }));
+            $('#stats-section' + index).find('.sparkline').sparkline('html', sparklineOptions);
+          });
+
+          rebindStatsDeleteLinks();
+        });
+      };
+
+      var rebindStatsDeleteLinks = function() {
+        $('.stat-remove').click(function(e) {
+          $.post('/removestat', { 
+            process: $(this).attr('data-process-name'),
+            stat: $(this).attr('data-stat-name')
+          }, updateSnapshot);
+          
+          e.preventDefault();
+        });
+      };
+
+      $('a[data-toggle="tab"]').on('shown', function() {
+        $('.sparkline').sparkline('html', sparklineOptions);
+      });
+    });
+
+  </script>
+
+</body>
+</html>

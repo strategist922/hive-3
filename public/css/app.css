@@ -1,0 +1,85 @@
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Cond Light'), local('OpenSans-CondensedLight'), url('../fonts/osc.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url('../fonts/os.woff') format('woff');
+}
+
+body {
+	font-family:'Open Sans', sans-serif;
+	font-weight:normal;
+	font-size:14px;
+}
+
+.container {
+	padding:20px;
+}
+
+.nav-tabs li img {
+	padding:6px 10px 0 10px;
+}
+
+table {
+  font-size:11px;
+}
+
+h1, h2 {
+  font-family:'Open Sans Condensed', sans-serif;
+  font-weight:normal;
+  color:#555;
+  font-size:25px;
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
+
+h2 {
+  font-family:'Open Sans', sans-serif;
+  font-size:15px;
+  text-transform:uppercase;
+  line-height:1.6em;
+  color:#777;
+}
+
+h2 div {
+  color:#aaa;
+  font-size:14px;
+  text-transform:none;
+}
+
+h2.underline {
+  border-bottom:solid 1px #eee;
+  padding-bottom:10px;
+}
+
+.uptime {
+  font-size:11px;
+  color:#bbb;
+}
+
+.stat {
+  position:relative;
+}
+
+.stat .delete {
+  font-size:11px;
+  position:absolute;
+  top:2px;
+  right:2px;
+  visibility:hidden;
+}
+
+.stat .delete a {
+  text-decoration:none;
+  color:#777;
+}
+
+.stat:hover .delete {
+  visibility:visible;
+}

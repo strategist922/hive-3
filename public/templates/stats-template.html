@@ -1,0 +1,17 @@
+<% _.each(process.stats, function(stat) { %>
+<div class="stat">
+  <h2 class="underline">
+    <%- stat.name %>:
+    <div>
+      <%- stat.last_value %>
+    </div>
+    <% if (stat.numeric_values && stat.values.length > 1) { %>
+      <div class="sparkline"><%- stat.values.join(',') %></div>
+    <% } %>
+  </h2>
+
+  <div class="delete">
+    <a href="#" data-stat-name="<%- stat.name %>" data-process-name="<%- process.name %>" class="stat-remove">remove</a>
+  </div>
+</div>
+<% }); %>
