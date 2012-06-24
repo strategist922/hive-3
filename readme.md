@@ -2,6 +2,8 @@
 
 hive is a simple [node.js](http://nodejs.org) server for displaying logs and statistics from remote processes.
 
+![](https://github.com/martinrue/hive/raw/master/public/img/readme/hive.png)
+
 ## Install
 
 ```
@@ -56,6 +58,10 @@ Decrements the value of the named statistic by 1 or as specified by the 'by' par
   key  – the name of the statistic
   by   – an optional amount by which to decrement the statistic
 ```
+
+## JSON Snapshot
+
+The entire system state is held in memory and available as a raw JSON data structure by making a GET request to `/snapshot`.
 
 ## Client
 
