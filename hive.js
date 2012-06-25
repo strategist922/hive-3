@@ -6,7 +6,7 @@ var processManager = require('./lib/process-manager');
 app.configure(function() {
   app.set('views', __dirname + '/views');
   app.set('view engine', 'html');
-  app.register(".html", require('ejs'));
+  app.register('.html', require('ejs'));
   app.use(require('./lib/ip-filter'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
@@ -16,7 +16,7 @@ app.configure(function() {
 });
 
 app.configure(function() {
-  var logoPath = __dirname + "/public/img/logo.png";
+  var logoPath = __dirname + '/public/img/logo.png';
   if (path.existsSync(logoPath)) app.enable('showlogo');
 });
 
