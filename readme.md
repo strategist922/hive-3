@@ -90,6 +90,10 @@ the log or statistic.
 The entire system state is held in memory and available as a raw JSON data
 structure by making a GET request to `/snapshot`.
 
+## IP Restrictions
+
+By default, hive adds a custom middleware to match incoming IPs against those configured in [ip-allow.js](https://github.com/martinrue/hive/blob/master/ip-allow.js). If your IP is not in that list, hive will return an HTTP 403 status. 
+
 ## Client
 
 The [hive-client](https://github.com/martinrue/hive-client) module provides a
