@@ -1,4 +1,4 @@
-var path = require('path');
+var fs = require('fs');
 var express = require('express');
 var app = module.exports = express.createServer();
 var processManager = require('./lib/process-manager');
@@ -17,7 +17,7 @@ app.configure(function() {
 
 app.configure(function() {
   var logoPath = __dirname + '/public/img/logo.png';
-  if (path.existsSync(logoPath)) app.enable('showlogo');
+  if (fs.existsSync(logoPath)) app.enable('showlogo');
 });
 
 require('./routes/web')(app, processManager);
