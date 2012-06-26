@@ -92,7 +92,9 @@ structure by making a GET request to `/snapshot`.
 
 ## IP Restrictions
 
-By default, hive adds a custom middleware to match incoming IPs against those configured in [ip-allow.js](https://github.com/martinrue/hive/blob/master/ip-allow.js). If your IP is not in that list, hive will return an HTTP 403 status. 
+By default, hive adds a custom middleware to match incoming IPs against those configured in [ip-allow.js](https://github.com/martinrue/hive/blob/master/ip-allow.js). You may also set the `HIVE_ALLOWED_IPS` environment variable to a comma-separated list of allowed IP addresses.
+
+Any requests from unknown IP addresses will receive an HTTP 403 status. 
 
 ## Client
 
