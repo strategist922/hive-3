@@ -92,9 +92,9 @@
 
       var rebindStatsDeleteLinks = function() {
         $('.stat-remove').click(function(e) {
-          $.post('/removestat', { 
-            process: $(this).attr('data-process-name'),
-            stat: $(this).attr('data-stat-name')
+          $.post('/remove', { 
+            name: $(this).attr('data-process-name'),
+            key: $(this).attr('data-stat-name')
           }, updateSnapshot);
           
           e.preventDefault();
