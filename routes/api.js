@@ -37,11 +37,20 @@ var routes = function(app, processManager) {
     res.json({ status: true });
   });
 
-  app.post('/removestat', function(req, res) {
-    if (requiredParamsMissing(['process', 'stat'], req, res)) return;
+  app.post('/reset', function(req, res) {
+    if (requiredParamsMissing(['name', 'key'], req, res)) return;
 
-    var process = processManager.getOrCreateProcess(req.body.process);
-    process.removeStat(req.body.stat);
+    var process = processManager.getOrCreateProcess(req.body.name);
+    process.resetStats(req.body.key);
+
+    res.json({ status: true });
+  });
+
+  app.post('/remove', function(req, res) {
+    if (requiredParamsMissing(['name', 'key'], req, res)) return;
+
+    var process = processManager.getOrCreateProcess(req.body.name);
+    process.removeStat(req.body.key);
 
     res.json({ status: true });
   });

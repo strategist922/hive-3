@@ -63,7 +63,7 @@ the log or statistic.
 
       HTTP Parameters
       ---------------
-      name  – the name of the process that the log is associated with
+      name  – the name of the process that the statistic should be set for
       key   – the name of the statistic
       value – the initial value of the statistic
 
@@ -72,7 +72,7 @@ the log or statistic.
 
       HTTP Parameters
       ---------------
-      name – the name of the process that the log is associated with
+      name – the name of the process that the statistic should be incremented for
       key  – the name of the statistic
       by   – an optional amount by which to increment the statistic
 
@@ -81,9 +81,25 @@ the log or statistic.
 
       HTTP Parameters
       ---------------
-      name – the name of the process that the log is associated with
+      name – the name of the process that the statistic should be decremented for
       key  – the name of the statistic
       by   – an optional amount by which to decrement the statistic
+
+    POST /reset
+    Resets the value of the named statistic(s) back to 0
+
+      HTTP Parameters
+      ---------------
+      name – the name of the process that the statistic(s) should be reset for
+      key  – the name of the statistic, or comma-separated list of multiple statistics
+
+    POST /remove
+    Removes the named statistic
+
+      HTTP Parameters
+      ---------------
+      name – the name of the process that the statistic should be removed from
+      key  – the name of the statistic
 
 ## JSON Snapshot
 
