@@ -11,10 +11,7 @@ var routes = function(app, processManager) {
   });
 
   app.post('/set', function(req, res) {
-    console.log('setting...');
     if (requiredParamsMissing(['name', 'key', 'value'], req, res)) return;
-
-    console.log('oops...');
 
     var process = processManager.getOrCreateProcess(req.body.name);
     process.setStat(req.body.key, req.body.value);
