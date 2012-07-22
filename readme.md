@@ -112,6 +112,8 @@ By default, hive adds a custom middleware to match incoming IPs against those co
 
 Any requests from unknown IP addresses will receive an HTTP 403 status. 
 
+To open up a hive instance to any public access, use an asterisk for the IP address.
+
 ## Client
 
 The [hive-client](https://github.com/martinrue/hive-client) module provides a
