@@ -14,7 +14,7 @@ var routes = function(app, processManager) {
     if (requiredParamsMissing(['name', 'key', 'value'], req, res)) return;
 
     var process = processManager.getOrCreateProcess(req.body.name);
-    process.setStat(req.body.key, req.body.value);
+    process.setStat(req.body.key, parseFloat(req.body.value));
 
     res.json({ status: true });
   });
@@ -23,7 +23,7 @@ var routes = function(app, processManager) {
     if (requiredParamsMissing(['name', 'key'], req, res)) return;
 
     var process = processManager.getOrCreateProcess(req.body.name);
-    process.incStat(req.body.key, req.body.by);
+    process.incStat(req.body.key, parseFloat(req.body.by));
 
     res.json({ status: true });
   });
@@ -32,7 +32,7 @@ var routes = function(app, processManager) {
     if (requiredParamsMissing(['name', 'key'], req, res)) return;
 
     var process = processManager.getOrCreateProcess(req.body.name);
-    process.decStat(req.body.key, req.body.by);
+    process.decStat(req.body.key, parseFloat(req.body.by));
 
     res.json({ status: true });
   });
