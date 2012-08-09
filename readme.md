@@ -119,5 +119,5 @@ To open up a hive instance to any public access, use an asterisk for the IP addr
 The [hive-client](https://github.com/martinrue/hive-client) module provides a
 simple RPC-style wrapper around the hive API for NodeJS users.
 
-The [hive-php](https://github.com/mheap/hive-php) is a simple wrapper available for PHP users.
+The [hive-php](https://github.com/mheap/hive-php) project is a simple wrapper available for PHP users.
 
