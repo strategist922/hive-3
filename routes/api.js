@@ -55,6 +55,14 @@ var routes = function(app, processManager) {
     res.json({ status: true });
   });
 
+  app.post('/delete_process', function(req, res) {
+    if (requiredParamsMissing(['name'], req, res)) return;
+
+    processManager.deleteProcess(req.body.name);
+
+    res.json({ status: true });
+  });
+
   var requiredParamsMissing = function(keys, req, res) {
     var paramsMissing = false;
 
