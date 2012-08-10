@@ -101,6 +101,13 @@ the log or statistic.
       name – the name of the process that the statistic should be removed from
       key  – the name of the statistic
 
+    POST /delete_process
+    Removes the named process
+
+      HTTP Parameters
+      ---------------
+      name – the name of the process that should be removed
+
 ## JSON Snapshot
 
 The entire system state is held in memory and available as a raw JSON data
