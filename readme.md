@@ -121,6 +121,15 @@ Any requests from unknown IP addresses will receive an HTTP 403 status.
 
 To open up a hive instance to any public access, use an asterisk for the IP address.
 
+## Basic Authentication
+
+If you do not wish to use IP based authentication, you can log in using basic auth. 
+Firstly, edit [ip-allow.js](https://github.com/martinrue/hive/blob/master/ip-allow.js) and use an asterisk for the IP address. Next, edit [auth-allow.js](https://github.com/martinrue/hive/blob/master/auth-allow.js) and provide a username and password. 
+
+If a username is specified, when visiting Hive you will be prompted for a username and password automatically.
+
+You may also restrict access to Hive using both IP restrictions and basic authentication should you desire.
+
 ## Client
 
 The [hive-client](https://github.com/martinrue/hive-client) module provides a

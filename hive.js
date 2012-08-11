@@ -8,6 +8,7 @@ app.configure(function() {
   app.set('view engine', 'html');
   app.register('.html', require('ejs'));
   app.use(require('./lib/ip-filter'));
+  app.use(require('./lib/basic-auth'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
