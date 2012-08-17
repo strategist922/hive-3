@@ -1,4 +1,3 @@
-var fs = require('fs');
 var express = require('express');
 var app = module.exports = express.createServer();
 var processManager = require('./lib/process-manager');

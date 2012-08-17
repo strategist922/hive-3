@@ -1,6 +1,6 @@
 {
   "name": "hive",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Martin Rue <hello@martinrue.com>",
   "description": "A simple nodejs server that displays logs and stats from remote processes",
   "dependencies": {
