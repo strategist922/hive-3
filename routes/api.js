@@ -1,6 +1,12 @@
 var _ = require('underscore');
 
 var routes = function(app, processManager) {
+
+  app.post('/restore', function(req, res){
+    processManager.restoreProcessesFromSnapshot(req.body);
+    res.json({ status: true });
+  });
+
   app.post('/log', function(req, res) {
     if (requiredParamsMissing(['name', 'message'], req, res)) return;
     
