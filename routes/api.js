@@ -14,7 +14,7 @@ var routes = function(app, processManager) {
     if (requiredParamsMissing(['name', 'key', 'value'], req, res)) return;
 
     var process = processManager.getOrCreateProcess(req.body.name);
-    process.setStat(req.body.key, parseFloat(req.body.value));
+    process.setStat(req.body.key, parseValue(req.body.value));
 
     res.json({ status: true });
   });
@@ -23,7 +23,7 @@ var routes = function(app, processManager) {
     if (requiredParamsMissing(['name', 'key'], req, res)) return;
 
     var process = processManager.getOrCreateProcess(req.body.name);
-    process.incStat(req.body.key, parseFloat(req.body.by));
+    process.incStat(req.body.key, parseValue(req.body.by || 1));
 
     res.json({ status: true });
   });
@@ -32,7 +32,7 @@ var routes = function(app, processManager) {
     if (requiredParamsMissing(['name', 'key'], req, res)) return;
 
     var process = processManager.getOrCreateProcess(req.body.name);
-    process.decStat(req.body.key, parseFloat(req.body.by));
+    process.decStat(req.body.key, parseValue(req.body.by || 1));
 
     res.json({ status: true });
   });
@@ -74,6 +74,11 @@ var routes = function(app, processManager) {
     });
 
     return paramsMissing;
+  };
+
+  var parseValue = function(value) {
+    var numericCheck = /^[0-9]*(\.\d+)?$/;
+    return numericCheck.test(value.toString()) ? parseFloat(value) : value;
   };
 };
 
