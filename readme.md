@@ -46,7 +46,7 @@ repository up to Heroku.
 ## API
 
 Hive provides a simple HTTP interface that allows logs and statistics to be
-created from a remote process. Hive logs multiple processes at once, so all
+created from a remote process. Hive logs multiple processes at once, so most 
 requests require a `name` parameter to identify the process that is creating
 the log or statistic.
 
@@ -107,6 +107,14 @@ the log or statistic.
       HTTP Parameters
       ---------------
       name – the name of the process that should be removed
+
+    POST /restore
+    Restores one or more processes along with logs and stats from a JSON snapshot
+
+      HTTP Body
+      ---------------
+      an application/json structure containing the system snapshot to restore from
+      (obtained by making a GET request to /snapshot)
 
 ## JSON Snapshot
 
