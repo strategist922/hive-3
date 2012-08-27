@@ -1,7 +1,6 @@
 var _ = require('underscore');
 
 var routes = function(app, processManager) {
-
   app.post('/restore', function(req, res){
     processManager.restoreProcessesFromSnapshot(req.body);
     res.json({ status: true });
